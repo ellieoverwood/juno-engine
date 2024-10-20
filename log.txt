@@ -1,0 +1,9 @@
+generate
+update
+render
+tick (fixed update)
+terminate
+
+entities and components, components have virtual functions instead of a system. literally everything is an ECS
+
+up next: figure out the virtual interface to each registry without knowing type
