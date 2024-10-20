@@ -36,10 +36,19 @@ void entity::destroy() {
 	available_ids.push(id);
 	entity_data* d = data();
 
+	for (int i = 0; i < FACET_CAP; i ++) {
+		if (d->flags[i]) at(i)->destroy(id);
+	}
+
 	d->flags.reset();
 	d->name[0] = '\0';
 }
 
 char* entity::name() {
 	return data()->name;
+}
+
+facet* entity::at(uint16_t facet_id) {
+	facet_metadata m = facet_metadata_arr[facet_id];
+	return (facet*)(&((char*)m.registry)[m.size * id]);
 }

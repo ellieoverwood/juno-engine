@@ -10,6 +10,8 @@ struct entity_data {
 	char                   name[ENTITY_NAME_MAX];
 };
 
+struct facet;
+
 struct entity {
 	uint16_t id;
 
@@ -23,6 +25,8 @@ struct entity {
 	entity_data* data();
 	char*        name();
 
+	facet* at(uint16_t facet_id);
+
 	template <typename T>
 	T* get() {
 		uint16_t t = facet_id<T>::id;
@@ -31,14 +35,14 @@ struct entity {
 
 		if (!is) return NULL;
 
-		return &facet_id<T>::registry[t];
+		return (T*)at(t);
 	}
 
 	template <typename T, typename ...Args>
 	T* add(Args&&... args) {
 		uint16_t t = facet_id<T>::id;
 		data()->flags[t] = true;
-		T* v = &((facet_id<T>::registry)[t]);
+		T* v = (T*)at(t);
 		*v = T(std::forward<Args>(args)...);
 		v->init(entity(id));
 		return v;
@@ -48,6 +52,6 @@ struct entity {
 	void remove() {
 		uint16_t t = facet_id<T>::id;
 		data()->flags[t] = false;
-		facet_id<T>::registry[t].destroy(entity(id));
+		((T*)at(t))->destroy(entity(id));
 	}
 };

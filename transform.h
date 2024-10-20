@@ -13,5 +13,3 @@ struct transform : public facet {
 
 	glm::mat4 matrix();
 };
-
-//FACET_H(transform);

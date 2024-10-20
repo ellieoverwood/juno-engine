@@ -1,9 +1,15 @@
 #pragma once
 #include "standard.h"
+#include "config.h"
 
-/*template <typename T>
 struct facet_metadata {
-}*/  // TODO: figure out
+	void* registry;
+	uint16_t size;
+
+	static void initialize();
+};
+
+extern facet_metadata* facet_metadata_arr;
 
 template <typename T>
 struct facet_id {
@@ -17,4 +23,8 @@ template <>\
 uint16_t facet_id<T>::id = __COUNTER__;\
 T __registry[ENTITY_CAP];\
 template <>\
-T* facet_id<T>::registry = __registry;
+void facet::declare<T>() {\
+	facet_metadata_arr[facet_id<T>::id].registry = (void*)__registry;\
+	facet_metadata_arr[facet_id<T>::id].size = sizeof(T);\
+}\
+
