@@ -49,6 +49,6 @@ char* entity::name() {
 }
 
 facet* entity::at(uint16_t facet_id) {
-	facet_metadata m = facet_metadata_arr[facet_id];
+	facet_metadata m = state::facet_metadata_arr[facet_id];
 	return (facet*)(&((char*)m.registry)[m.size * id]);
 }

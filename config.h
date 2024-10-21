@@ -2,4 +2,4 @@
 
 #define ENTITY_CAP 256
 #define FACET_CAP 64
-#define ENTITY_NAME_MAX 16
+#define NAME_CAP 16

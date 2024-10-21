@@ -7,7 +7,7 @@
 
 struct entity_data {
 	std::bitset<FACET_CAP> flags;
-	char                   name[ENTITY_NAME_MAX];
+	char                   name[NAME_CAP];
 };
 
 struct facet;
