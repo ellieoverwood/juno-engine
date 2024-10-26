@@ -3,8 +3,9 @@
 #include "facet_id.h"
 #include <bitset>
 
+namespace juno {
 struct entity_data {
-	std::bitset<FACET_CAP> flags;
+	std::bitset<FACET_CAP + 1> flags;
 	char                   name[NAME_CAP];
 };
 
@@ -19,9 +20,19 @@ struct entity {
 	static void initialize();
 	static entity spawn();
 	static entity spawn(char* name);
+	static entity prefab();
+	static entity prefab(char* name);
 
 	entity_data* data();
 	char*        name();
+
+	void enable();
+	void disable();
+	void toggle();
+	bool active();
+
+	entity copy();
+	entity instantiate();
 
 	facet* at(uint16_t facet_id);
 
@@ -52,4 +63,8 @@ struct entity {
 		data()->flags[t] = false;
 		((T*)at(t))->destroy(entity(id));
 	}
+
+	private:
+	entity copy(bool and_enable);
 };
+}

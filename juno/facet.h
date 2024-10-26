@@ -3,6 +3,7 @@
 #include "standard.h"
 #include "entity.h"
 
+namespace juno {
 struct facet {
 	template <typename T>
 	static void declare();
@@ -13,3 +14,4 @@ struct facet {
 	virtual void tick     (entity self) {};
 	virtual void destroy  (entity self) {};
 };
+}

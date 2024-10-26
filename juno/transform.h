@@ -1,6 +1,7 @@
 #pragma once
 #include "facet.h"
 
+namespace juno {
 struct transform : public facet {
 	transform();
 	transform(glm::vec3 position);
@@ -13,3 +14,4 @@ struct transform : public facet {
 
 	glm::mat4 matrix();
 };
+}

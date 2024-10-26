@@ -1,5 +1,6 @@
 #include "transform.h"
 
+namespace juno {
 FACET_DECL(transform);
 
 transform::transform() {
@@ -19,4 +20,5 @@ transform::transform(glm::vec3 _position, glm::vec3 _rotation, float _angle, glm
 	rotation = _rotation;
 	angle    = _angle;
 	scale    = _scale;
+}
 }
