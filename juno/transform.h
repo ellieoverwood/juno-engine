@@ -13,9 +13,5 @@ struct transform : public facet {
 	glm::vec3 scale;
 
 	glm::mat4 matrix();
-
-	void init(entity e) override {
-		printf("%d\n", e);
-	}
 };
 }

@@ -1,7 +1,12 @@
 #include "sdl_window.h"
+#include "../debug/dev_menu.h"
 
 #include <SDL.h>
 #include <SDL_opengl.h>
+
+#include <imgui.h>
+#include <backends/imgui_impl_sdl2.h>
+#include <backends/imgui_impl_opengl3.h>
 
 SDL_Window* native_window;
 SDL_GLContext sdl_context;
@@ -23,6 +28,15 @@ namespace juno::platform {
         SDL_SetWindowMinimumSize(native_window, window_min_width, window_min_height);
         sdl_context = SDL_GL_CreateContext(native_window);
         SDL_GL_SetSwapInterval(1);
+
+        ImGui::CreateContext();
+        ImGui::StyleColorsDark();
+        ImGuiIO& io = ImGui::GetIO();
+        io.ConfigFlags |= ImGuiConfigFlags_NavEnableKeyboard; // Enable Keyboard Controls
+
+        // Setup Platform/Renderer backends
+        ImGui_ImplSDL2_InitForOpenGL(native_window, sdl_context);
+        ImGui_ImplOpenGL3_Init();
     }
 
     void sdl_window::poll() {
@@ -32,14 +46,28 @@ namespace juno::platform {
             switch (event.type) {
                 case SDL_QUIT: to_terminate = true; break;
             }
+            ImGui_ImplSDL2_ProcessEvent(&event);
         }
+
+        ImGui_ImplOpenGL3_NewFrame();
+        ImGui_ImplSDL2_NewFrame();
+        ImGui::NewFrame();
+        juno::debug::dev::update();
     }
 
     void sdl_window::swap() {
+        ImGui::EndFrame();
+        ImGui::Render();
+        ImGui_ImplOpenGL3_RenderDrawData(ImGui::GetDrawData());
+
         SDL_GL_SwapWindow(native_window);
     }
 
     void sdl_window::terminate() {
+        ImGui_ImplOpenGL3_Shutdown();
+        ImGui_ImplSDL2_Shutdown();
+        ImGui::DestroyContext();
+
         SDL_GL_DeleteContext(sdl_context);
         SDL_DestroyWindow(native_window);
         SDL_Quit();

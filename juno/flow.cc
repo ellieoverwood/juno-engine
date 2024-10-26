@@ -49,6 +49,7 @@ int main() {
 		state::window->swap();
 	}
 
+	destroy();
 	for (int i = 0; i < entity_list->size(); i ++) {
 		entity e = (*entity_list)[i];
 		std::bitset<FACET_CAP + 1> flags = e.data()->flags;
@@ -58,7 +59,5 @@ int main() {
 			}
 		}
 	}
-
-	destroy();
 	state::window->terminate();
 }
