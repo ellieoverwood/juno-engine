@@ -13,5 +13,6 @@ struct facet {
 	virtual void render   (entity self) {};
 	virtual void tick     (entity self) {};
 	virtual void destroy  (entity self) {};
+	virtual void ui       (entity self) {};
 };
 }

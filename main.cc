@@ -1,8 +1,14 @@
 #include "juno/juno.h"
+#include "juno/platform/sdl_window.h"
 
 juno::entity e;
 
 void juno::init() {
+	juno::state::window = new juno::platform::sdl_window();
+	juno::state::window->create(
+		"Juno Engine Build", 600, 400, 300, 200, 3, 3
+	);
+
 	juno::facet::declare<juno::transform>();
 
 	e = juno::entity::spawn("aaa");

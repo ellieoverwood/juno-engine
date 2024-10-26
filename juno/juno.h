@@ -2,3 +2,4 @@
 #include "facet.h"
 #include "transform.h"
 #include "flow.h"
+#include "window.h"
