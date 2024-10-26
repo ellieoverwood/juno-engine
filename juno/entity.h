@@ -1,7 +1,5 @@
 #pragma once
 #include "standard.h"
-#include "config.h"
-#include "util/maybe.h"
 #include "facet_id.h"
 #include <bitset>
 

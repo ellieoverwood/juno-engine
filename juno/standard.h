@@ -4,4 +4,6 @@
 #include <stdbool.h>
 #include <stddef.h>
 #include <stdint.h>
-#include "libs/glm/glm.hpp"
+#include <glm.hpp>
+
+#include "../config.h"

@@ -1,6 +1,5 @@
 #pragma once
 #include "standard.h"
-#include "config.h"
 #include <vector>
 
 /*enum class facet_metadata_field_type {

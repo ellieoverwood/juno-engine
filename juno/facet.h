@@ -1,7 +1,6 @@
 #pragma once
 
 #include "standard.h"
-#include "config.h"
 #include "entity.h"
 
 struct facet {

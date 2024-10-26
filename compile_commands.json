@@ -1,0 +1,107 @@
+[
+  {
+    "arguments": [
+      "/sbin/g++",
+      "-c",
+      "-Wall",
+      "-Wpedantic",
+      "-g",
+      "-I",
+      "libs/glm",
+      "-I",
+      "libs/SDL2",
+      "-I",
+      "libs/imgui",
+      "-o",
+      "build/build.out",
+      "juno/entity.cc"
+    ],
+    "directory": "/home/ellie/code/juno",
+    "file": "/home/ellie/code/juno/juno/entity.cc",
+    "output": "/home/ellie/code/juno/build/build.out"
+  },
+  {
+    "arguments": [
+      "/sbin/g++",
+      "-c",
+      "-Wall",
+      "-Wpedantic",
+      "-g",
+      "-I",
+      "libs/glm",
+      "-I",
+      "libs/SDL2",
+      "-I",
+      "libs/imgui",
+      "-o",
+      "build/build.out",
+      "juno/facet.cc"
+    ],
+    "directory": "/home/ellie/code/juno",
+    "file": "/home/ellie/code/juno/juno/facet.cc",
+    "output": "/home/ellie/code/juno/build/build.out"
+  },
+  {
+    "arguments": [
+      "/sbin/g++",
+      "-c",
+      "-Wall",
+      "-Wpedantic",
+      "-g",
+      "-I",
+      "libs/glm",
+      "-I",
+      "libs/SDL2",
+      "-I",
+      "libs/imgui",
+      "-o",
+      "build/build.out",
+      "juno/transform.cc"
+    ],
+    "directory": "/home/ellie/code/juno",
+    "file": "/home/ellie/code/juno/juno/transform.cc",
+    "output": "/home/ellie/code/juno/build/build.out"
+  },
+  {
+    "arguments": [
+      "/sbin/g++",
+      "-c",
+      "-Wall",
+      "-Wpedantic",
+      "-g",
+      "-I",
+      "libs/glm",
+      "-I",
+      "libs/SDL2",
+      "-I",
+      "libs/imgui",
+      "-o",
+      "build/build.out",
+      "main.cc"
+    ],
+    "directory": "/home/ellie/code/juno",
+    "file": "/home/ellie/code/juno/main.cc",
+    "output": "/home/ellie/code/juno/build/build.out"
+  },
+  {
+    "arguments": [
+      "/sbin/g++",
+      "-c",
+      "-Wall",
+      "-Wpedantic",
+      "-g",
+      "-I",
+      "libs/glm",
+      "-I",
+      "libs/SDL2",
+      "-I",
+      "libs/imgui",
+      "-o",
+      "build/build.out",
+      "juno/facet_id.cc"
+    ],
+    "directory": "/home/ellie/code/juno",
+    "file": "/home/ellie/code/juno/juno/facet_id.cc",
+    "output": "/home/ellie/code/juno/build/build.out"
+  }
+]
