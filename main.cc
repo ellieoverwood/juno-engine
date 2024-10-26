@@ -16,7 +16,6 @@ void juno::init() {
 }
 
 void juno::update() {
-	printf("%s %f\n", e.name(), e.get<juno::transform>()->position.x);
 }
 
 void juno::render() {

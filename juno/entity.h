@@ -2,6 +2,7 @@
 #include "standard.h"
 #include "facet_id.h"
 #include <bitset>
+#include <vector>
 
 namespace juno {
 struct entity_data {
@@ -29,7 +30,7 @@ struct entity {
 	void disable();
 	void toggle();
 	bool active();
-
+	static std::vector<entity>* entity_list();
 
 	facet* at(uint16_t facet_id);
 
