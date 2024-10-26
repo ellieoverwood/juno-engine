@@ -30,7 +30,7 @@ entity entity::spawn(char* name) {
 	return e;
 }
 
-entity entity::prefab() {
+/*entity entity::prefab() {
 	entity e = available_ids.front();
 	e.data()->flags[0] = false;
 	available_ids.pop();
@@ -41,7 +41,7 @@ entity entity::prefab(char* name) {
 	entity e = prefab();
 	strcpy(e.data()->name, name);
 	return e;
-}
+}*/
 
 entity_data* entity::data() {
 	return &entities[id];	
@@ -51,7 +51,7 @@ void entity::destroy() {
 	available_ids.push(id);
 	entity_data* d = data();
 
-	for (int i = 0; i < FACET_CAP; i ++) {
+	for (int i = 1; i < FACET_CAP; i ++) {
 		if (d->flags[i]) at(i)->destroy(id);
 	}
 
@@ -84,7 +84,7 @@ void entity::toggle() {
 	data()->flags[0] = !active();
 }
 
-entity entity::copy(bool and_enable) {
+/*entity entity::copy(bool and_enable) {
 	entity e = available_ids.front();
 	available_ids.pop();
 	memcpy(&e.data()->flags, &data()->flags, sizeof(std::bitset<FACET_CAP + 1>));
@@ -92,7 +92,7 @@ entity entity::copy(bool and_enable) {
 
 	for (int i = 1; i < FACET_CAP + 1; i ++) {
 		if (e.data()->flags[i]) {
-		
+			memcpy(e.at(i), at(i), state::facet_metadata_arr[i].size);
 		}
 	}
 }
@@ -103,6 +103,6 @@ entity entity::copy() {
 
 entity entity::instantiate() {
 	return copy(true);
-}
+}*/ // this seems to not be possible with virtual classes
 
 }

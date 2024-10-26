@@ -1,4 +1,4 @@
-files = juno/entity.cc juno/facet.cc juno/transform.cc main.cc juno/facet_id.cc
+files = juno/entity.cc juno/facet.cc juno/transform.cc main.cc juno/facet_id.cc juno/flow.cc
 flags = -Wall -Wpedantic -g
 build = build/build.out
 

@@ -14,14 +14,13 @@ struct facet;
 struct entity {
 	uint16_t id;
 
+	entity() {};
 	entity(uint16_t id);
 	void destroy();
 
 	static void initialize();
 	static entity spawn();
 	static entity spawn(char* name);
-	static entity prefab();
-	static entity prefab(char* name);
 
 	entity_data* data();
 	char*        name();
@@ -31,8 +30,6 @@ struct entity {
 	void toggle();
 	bool active();
 
-	entity copy();
-	entity instantiate();
 
 	facet* at(uint16_t facet_id);
 
@@ -63,8 +60,5 @@ struct entity {
 		data()->flags[t] = false;
 		((T*)at(t))->destroy(entity(id));
 	}
-
-	private:
-	entity copy(bool and_enable);
 };
 }

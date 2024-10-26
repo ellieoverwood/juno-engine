@@ -1,16 +1,24 @@
-#include "juno/entity.h"
-#include "juno/facet.h"
-#include "juno/transform.h"
+#include "juno/juno.h"
 
-int main() {
-	juno::entity::initialize();
-	juno::facet_metadata::initialize();
+juno::entity e;
+
+void juno::init() {
 	juno::facet::declare<juno::transform>();
 
-	juno::entity e = juno::entity::spawn("aaa");
+	e = juno::entity::spawn("aaa");
 	e.add<juno::transform>(glm::vec3(3.0, 0.0, 0.0), glm::vec3(0.0, 1.0, 0.0), 90, glm::vec3(1, 1, 1));
-	printf("%s %f\n", e.name(), e.get<juno::transform>()->position.x);
-	//e.remove<transform>();
+}
 
+void juno::update() {
+	printf("%s %f\n", e.name(), e.get<juno::transform>()->position.x);
+}
+
+void juno::render() {
+}
+
+void juno::post() {
+}
+
+void juno::destroy() {
 	e.destroy();
 }
