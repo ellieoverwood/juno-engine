@@ -3,6 +3,7 @@
 #include "facet_id.h"
 #include "window.h"
 #include "facet.h"
+#include "ui/ui.h"
 
 using namespace juno;
 juno::window* juno::state::window;
@@ -19,6 +20,7 @@ int main() {
 
 	for (;;) {
 		state::window->poll();
+		ui::update();
 		if (state::window->to_terminate) break;
 	
 		update();
