@@ -20,7 +20,7 @@ namespace internal_state {
 struct entity {
 	uint16_t id;
 
-	entity() {};
+	entity();
 	entity(uint16_t id);
 	void destroy();
 

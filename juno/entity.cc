@@ -10,6 +10,10 @@ std::queue<entity> available_ids;
 
 std::vector<entity> internal_state::entity_list;
 
+entity::entity() {
+	id = UINT16_MAX;
+}
+
 entity::entity(uint16_t _id) {
 	id = _id;
 }

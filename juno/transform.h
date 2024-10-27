@@ -12,5 +12,7 @@ struct transform : public facet {
 	glm::vec3 scale;
 
 	glm::mat4 matrix();
+
+	void ui(entity self) override;
 };
 }
