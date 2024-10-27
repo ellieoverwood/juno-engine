@@ -7,14 +7,11 @@
 namespace juno {
 entity_data entities[ENTITY_CAP] = {};
 std::queue<entity> available_ids;
-std::vector<entity> entities_in_use;
+
+std::vector<entity> internal_state::entity_list;
 
 entity::entity(uint16_t _id) {
 	id = _id;
-}
-
-std::vector<entity>* entity::entity_list() {
-	return &entities_in_use;
 }
 
 void entity::initialize() {
@@ -27,7 +24,7 @@ entity entity::spawn() {
 	entity e = available_ids.front();
 	e.data()->flags[0] = true;
 	available_ids.pop();
-	entities_in_use.push_back(e);
+	internal_state::entity_list.push_back(e);
 	return e;
 }
 
@@ -52,9 +49,9 @@ void entity::destroy() {
 	d->flags.reset();
 	d->name[0] = '\0';
 
-	for (int i = 0; i < entities_in_use.size(); i ++) {
-		if (id == entities_in_use[i].id) {
-			entities_in_use.erase(entities_in_use.begin() + i);
+	for (int i = 0; i < internal_state::entity_list.size(); i ++) {
+		if (id == internal_state::entity_list[i].id) {
+			internal_state::entity_list.erase(internal_state::entity_list.begin() + i);
 		}
 	}
 }

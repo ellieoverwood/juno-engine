@@ -11,6 +11,11 @@ struct entity_data {
 };
 
 struct facet;
+struct entity;
+
+namespace internal_state {
+	extern std::vector<entity> entity_list;
+}
 
 struct entity {
 	uint16_t id;
@@ -30,7 +35,6 @@ struct entity {
 	void disable();
 	void toggle();
 	bool active();
-	static std::vector<entity>* entity_list();
 
 	facet* at(uint16_t facet_id);
 

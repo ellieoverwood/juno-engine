@@ -4,6 +4,7 @@
 #include "window.h"
 #include "facet.h"
 #include "ui/ui.h"
+#include <SDL_opengl.h>
 
 using namespace juno;
 juno::window* juno::state::window;
@@ -16,8 +17,6 @@ int main() {
 
 	init();
 
-	entity_list = entity::entity_list();
-
 	for (;;) {
 		state::window->poll();
 		ui::update();
@@ -25,8 +24,8 @@ int main() {
 	
 		update();
 
-		for (int i = 0; i < entity_list->size(); i ++) {
-			entity e = (*entity_list)[i];
+		for (int i = 0; i < internal_state::entity_list.size(); i ++) {
+			entity e = internal_state::entity_list[i];
 			std::bitset<FACET_CAP + 1> flags = e.data()->flags;
 			for (int j = 1; j < FACET_CAP + 1; j ++) {
 				if (flags[j]) {
@@ -37,8 +36,8 @@ int main() {
 
 		render();
 
-		for (int i = 0; i < entity_list->size(); i ++) {
-			entity e = (*entity_list)[i];
+		for (int i = 0; i < internal_state::entity_list.size(); i ++) {
+			entity e = internal_state::entity_list[i];
 			std::bitset<FACET_CAP + 1> flags = e.data()->flags;
 			for (int j = 1; j < FACET_CAP + 1; j ++) {
 				if (flags[j]) {
@@ -52,8 +51,8 @@ int main() {
 	}
 
 	destroy();
-	for (int i = 0; i < entity_list->size(); i ++) {
-		entity e = (*entity_list)[i];
+	for (int i = 0; i < internal_state::entity_list.size(); i ++) {
+		entity e = internal_state::entity_list[i];
 		std::bitset<FACET_CAP + 1> flags = e.data()->flags;
 		for (int j = 1; j < FACET_CAP + 1; j ++) {
 			if (flags[j]) {
